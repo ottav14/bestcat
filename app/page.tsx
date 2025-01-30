@@ -8,38 +8,45 @@ import DynamicImage from "../components/DynamicImage/DynamicImage.tsx";
 
 export default function Home() {
 
-	const [imageUrl, setImageUrl] = useState('/api/image/Bombay_79.jpg');
+	const [imageUrl, setImageUrl] = useState('');
+
+	const fetchImage = async () => {
+		const response = await fetch("/api/id"); 
+		const data = await response.json();
+		const url = `/api/image/${data.imageId}`;
+		setImageUrl(url);
+		console.log(data.imageId);
+	};
 
 	useEffect(() => {
-		const fetchImage = async () => {
-			const filename = "Bombay_79.jpg"; 
-			const url = `/api/image/${filename}`;
-			setImageUrl(url);
-		};
 
 		fetchImage();
+
 	}, []);
+
+	const action = () => {
+		fetchImage();
+	}
 
 	return (
 		<div className={styles.page}>
 			<main className={styles.main}>
 				<div className={styles.interfaceContainer}>
-					<DynamicImage />
+					<DynamicImage imageUrl={imageUrl} />
 					<div className={styles.buttonContainer}>
 						<Button 
 							backgroundImage='/thumbs-up.svg' 
 							backgroundColor='#0f0'
+							action={action}
 						/>
 						<Button 
 							backgroundImage='/thumbs-down.svg' 
 							backgroundColor='#f00'
+							action={action}
 						/>
 					</div>
 				</div>
 			</main>
-			<footer className={styles.footer}>
-				test
-			</footer>
 		</div>
 	);
 }

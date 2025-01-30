@@ -3,25 +3,10 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MongoClient } from 'mongodb';
+import styles from './DynamicImage.module.css';
 
-const DynamicImage = () => {
+const DynamicImage = ({ imageUrl }) => {
 	
-	const [imageId, setImageId] = useState(0);
-	const [imageUrl, setImageUrl] = useState('');
-
-	useEffect(() => {
-
-		const fetchImage = async () => {
-			const response = await fetch("/api/id"); 
-			const data = await response.json();
-			const url = `/api/image/${data.imageId}`;
-			setImageUrl(url);
-			console.log(data.imageId);
-		};
-		fetchImage();
-
-	}, []);
-
 	if(imageUrl) {
 		return (
 			<Image
@@ -29,11 +14,12 @@ const DynamicImage = () => {
 				alt='Cat pic'
 				width={512}
 				height={512}
+				priority={true}
 			/>
 		);
 	}
 	else {
-		return <div />;
+		return <div className={styles.placeHolder} />;
 	}
 }
 export default DynamicImage;
