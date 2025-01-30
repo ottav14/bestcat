@@ -1,10 +1,9 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import Image from "next/image";
 import styles from "./page.module.css";
-import Button from "../components/Button/Button.tsx";
-import DynamicImage from "../components/DynamicImage/DynamicImage.tsx";
+import Button from "../components/Button/Button.jsx";
+import DynamicImage from "../components/DynamicImage/DynamicImage.jsx";
 
 export default function Home() {
 

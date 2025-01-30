@@ -1,7 +1,6 @@
-import Image from 'next/image';
 import styles from './Button.module.css';
 
-const Button = ({ children, backgroundImage, backgroundColor, action }) => {
+const Button = ({ backgroundImage, backgroundColor, action }) => {
 
 	return (
 		<button 

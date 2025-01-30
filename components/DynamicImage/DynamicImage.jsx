@@ -1,8 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { MongoClient } from 'mongodb';
 import styles from './DynamicImage.module.css';
 
 const DynamicImage = ({ imageUrl }) => {
