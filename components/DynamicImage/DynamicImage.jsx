@@ -3,12 +3,12 @@
 import Image from 'next/image';
 import styles from './DynamicImage.module.css';
 
-const DynamicImage = ({ imageUrl }) => {
+const DynamicImage = ({ img }) => {
 	
-	if(imageUrl) {
+	if(img) {
 		return (
 			<Image
-				src={imageUrl}
+				src={`data: image/jpeg; base64, ${img}`}
 				alt='Cat pic'
 				width={512}
 				height={512}
