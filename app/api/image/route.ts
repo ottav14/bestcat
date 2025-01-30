@@ -3,7 +3,7 @@ import { MongoClient, GridFSBucket, ObjectId } from 'mongodb';
 const uri = 'mongodb+srv://dom:5467@cluster0.ilori.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const imageCount = 2403;
 
-const fetchImage = async () => {
+export async function GET() {
 
 	const client = new MongoClient(uri);
 	await client.connect();
@@ -32,7 +32,8 @@ const fetchImage = async () => {
 	const buffer = await streamToBuffer(downloadStream);
 	const base64 = buffer.toString('base64');
 
-	return base64;
-
+  return new Response(JSON.stringify({ imageBase64: base64 }), { 
+    status: 200, 
+    headers: { 'Content-Type': 'application/json' }
+  });
 }
-export default fetchImage;
