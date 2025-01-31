@@ -9,13 +9,16 @@ const Home = () => {
 
 	const [base64, setBase64] = useState('');
 	const [fetched, setFetched] = useState(false);
+	const [count, setCount] = useState(0);
 
 	const fetchImage = async () => {
 		if(!fetched) {
-			const response = await fetch('/api/image');
+			const response = await fetch('/api/doc');
 			const data = await response.json();
 			setBase64(data.imageBase64);
 			setFetched(true);
+			setCount(data.count);
+			console.log(data.count);
 		}
 	}
 
@@ -32,6 +35,9 @@ const Home = () => {
 		<div className={styles.page}>
 			<main className={styles.main}>
 				<div className={styles.interfaceContainer}>
+					<div className={styles.count}>
+						{count}
+					</div>
 					{base64 ? <DynamicImage img={base64} /> : <div className={styles.placeHolder} />}
 					<div className={styles.buttonContainer}>
 						<Button 

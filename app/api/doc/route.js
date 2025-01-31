@@ -9,16 +9,24 @@ export async function GET() {
 	await client.connect();
 
 	const db = client.db('photos'); 
-	const collection = db.collection('fs.files'); 
+	const image_collection = db.collection('fs.files'); 
+	const counts_collection = db.collection('counts');
 
 	const randomIndex = Math.floor(Math.random() * imageCount);
 
-	const randomImage = await collection.find().skip(randomIndex).limit(1).next();
+	const randomImage = await image_collection.find().skip(randomIndex).limit(1).next();
 	const imageId = randomImage._id;
-
-	const bucket = new GridFSBucket(db);
 	const fileId = new ObjectId(imageId);
 
+	// Fetch count
+	const getCount = async (id) => { 
+		const countJSON = await counts_collection.findOne({ _id: fileId });
+		return countJSON.value;
+	};
+	const currentCount = await getCount(imageId);
+
+	// Fetch image
+	const bucket = new GridFSBucket(db);
 	const downloadStream = bucket.openDownloadStream(fileId);
 
 	const streamToBuffer = async (stream) => {
@@ -32,8 +40,13 @@ export async function GET() {
 	const buffer = await streamToBuffer(downloadStream);
 	const base64 = buffer.toString('base64');
 
-  return new Response(JSON.stringify({ imageBase64: base64 }), { 
-    status: 200, 
-    headers: { 'Content-Type': 'application/json' }
-  });
+	const responseJSON = {
+		imageBase64: base64,
+		count: currentCount
+	};
+
+	return new Response(JSON.stringify(responseJSON), { 
+		status: 200, 
+		headers: { 'Content-Type': 'application/json' }
+	});
 }

@@ -1,5 +1,5 @@
 .page {
-	background-color: #111;
+	background-color: #000;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -28,6 +28,14 @@
 
 }
 
+.count {
+
+	font-size: 48pt;
+	color: #fff;
+	padding: 10px;
+
+}
+
 .buttonContainer {
 
 	display: flex;
@@ -37,5 +45,12 @@
 .footer {
 
 	height: 80px;
+
+}
+
+.placeHolder {
+
+	width: 512px;
+	height: 512px;
 
 }
