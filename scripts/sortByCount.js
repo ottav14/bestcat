@@ -1,9 +1,8 @@
 import { MongoClient, GridFSBucket, ObjectId } from 'mongodb';
 
 const uri = 'mongodb+srv://dom:5467@cluster0.ilori.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-const imageCount = 2403;
 
-const getCount = async () => {
+const initCounts = async () => {
 
 	const client = new MongoClient(uri);
 	try {
@@ -13,22 +12,24 @@ const getCount = async () => {
 		const photo_collection = db.collection('fs.files'); 
 		const count_collection = db.collection('counts'); 
 
-		const randomIndex = Math.floor(Math.random() * imageCount);
+		const ids = await count_collection
+			.find({}, { projection: { _id: 1, value: 0 } })
+			.sort({ value: -1 })
+			.limit(10)
+			.toArray();
 
-		const randomImage = await photo_collection.find().skip(randomIndex).limit(1).next();
-		const imageId = randomImage._id;
-
-		const count = await count_collection.findOne({ _id: imageId }); 
-
-		console.log(count.value);
+		const images = [];
+		for(let i=0; i<ids.length; i++) {
+			
+		}
 
 	}
 	catch(error) {
-		console.error('error failed to init counts:', error);
+		console.error(error);
 	}
 	finally {
 		await client.close();
 	}
 
 }
-getCount();
+initCounts();

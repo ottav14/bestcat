@@ -17,6 +17,16 @@
 
 }
 
+.sidebar {
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 20px;
+	font-size: 16pt;
+
+}
+
 .title {
 
 	font-size: 48pt;

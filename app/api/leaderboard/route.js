@@ -1,5 +1,4 @@
 import { MongoClient, GridFSBucket, ObjectId } from 'mongodb';
-import fetchImage from '../../../scripts/fetchImage.js';
 
 const uri = 'mongodb+srv://dom:5467@cluster0.ilori.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const imageCount = 2403;
@@ -27,7 +26,19 @@ export async function GET() {
 	const currentCount = await getCount(imageId);
 
 	// Fetch image
-	const base64 = await fetchImage(client, fileId);
+	const bucket = new GridFSBucket(db);
+	const downloadStream = bucket.openDownloadStream(fileId);
+
+	const streamToBuffer = async (stream) => {
+		const chunks = [];
+		for await (const chunk of stream) {
+			chunks.push(chunk);
+		}
+		return Buffer.concat(chunks);
+	};
+
+	const buffer = await streamToBuffer(downloadStream);
+	const base64 = buffer.toString('base64');
 
 	const responseJSON = {
 		imageBase64: base64,
