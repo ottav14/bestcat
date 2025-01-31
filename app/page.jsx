@@ -34,6 +34,9 @@ const Home = () => {
 	return (
 		<div className={styles.page}>
 			<main className={styles.main}>
+				<div className={styles.sidebar}>
+					<a href="/leaderboard">Leaderboard</a>
+				</div>
 				<div className={styles.interfaceContainer}>
 					<div className={styles.count}>
 						{count}
