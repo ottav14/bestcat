@@ -1,13 +1,9 @@
 import { MongoClient, GridFSBucket, ObjectId } from 'mongodb';
+import fetchImage from './fetchImage.js';
 
-const uri = 'mongodb+srv://dom:5467@cluster0.ilori.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const fetchLeaderboard = async (client) => {
 
-const initCounts = async () => {
-
-	const client = new MongoClient(uri);
 	try {
-		await client.connect();
-
 		const db = client.db('photos'); 
 		const photo_collection = db.collection('fs.files'); 
 		const count_collection = db.collection('counts'); 
@@ -20,8 +16,11 @@ const initCounts = async () => {
 
 		const images = [];
 		for(let i=0; i<ids.length; i++) {
-			
+			const base64 = await fetchImage(client, ids[i]._id);
+			images.push(base64);
 		}
+
+		return images;
 
 	}
 	catch(error) {
@@ -32,4 +31,4 @@ const initCounts = async () => {
 	}
 
 }
-initCounts();
+export default fetchLeaderboard;

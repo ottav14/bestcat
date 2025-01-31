@@ -1,7 +1,7 @@
 import { MongoClient, GridFSBucket, ObjectId } from 'mongodb';
 import fetchImage from '../../../scripts/fetchImage.js';
 
-const uri = 'mongodb+srv://dom:5467@cluster0.ilori.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const uri = process.env.MONGODB_URI;
 const imageCount = 2403;
 
 export async function GET() {

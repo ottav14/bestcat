@@ -1,6 +1,8 @@
 import styles from './page.module.css';
+import fetchLeaderboard from '../../scripts/fetchLeaderboard';
 
 const Leaderboard = () => {
+
 
 	return (
 		<div className={styles.page}>
