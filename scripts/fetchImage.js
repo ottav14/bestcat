@@ -1,7 +1,4 @@
-import { MongoClient, GridFSBucket, ObjectId } from 'mongodb';
-
-const uri = 'mongodb+srv://dom:5467@cluster0.ilori.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-const imageCount = 2403;
+import { GridFSBucket, ObjectId } from 'mongodb';
 
 const fetchImage = async (client, id) => {
 

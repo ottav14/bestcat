@@ -1,5 +1,6 @@
 import { MongoClient, GridFSBucket, ObjectId } from 'mongodb';
 import fetchImage from './fetchImage.js';
+import fetchCount from './fetchCount.js';
 
 const fetchLeaderboard = async (client) => {
 
@@ -14,13 +15,19 @@ const fetchLeaderboard = async (client) => {
 			.limit(10)
 			.toArray();
 
-		const images = [];
+		const objs = [];
 		for(let i=0; i<ids.length; i++) {
-			const base64 = await fetchImage(client, ids[i]._id);
-			images.push(base64);
+			const imageBase64 = await fetchImage(client, ids[i]._id);
+			const countObj = await count_collection.findOne({ _id: ids[i]._id }, { projection: { _id: 0, value: 1 } });
+			const imageCount = countObj.value;
+			const obj = {
+				count: imageCount,
+				base64: imageBase64
+			};
+			objs.push(obj);
 		}
 
-		return images;
+		return objs;
 
 	}
 	catch(error) {

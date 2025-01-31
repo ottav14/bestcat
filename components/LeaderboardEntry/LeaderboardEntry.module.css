@@ -1,0 +1,16 @@
+.main {
+
+	display: flex;
+	justify-content: space-between;
+
+
+}
+
+.count {
+
+	font-size: 24pt;
+	color: #fff;
+
+}
+
+

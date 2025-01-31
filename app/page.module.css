@@ -31,6 +31,7 @@
 .count {
 
 	font-size: 48pt;
+	font-family: 'Comic Sans MS';
 	color: #fff;
 	padding: 10px;
 
@@ -49,6 +50,7 @@
 	top: 0;
 	padding: 20px;
 	font-size: 16pt;
+	font-family: 'Comic Sans MS';
 
 }
 

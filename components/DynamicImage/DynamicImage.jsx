@@ -1,21 +1,12 @@
-"use client"
-
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './DynamicImage.module.css';
 
 const DynamicImage = ({ img }) => {
 
-	const [imageBase64, setImageBase64] = useState('');
-
-	useEffect(() => {
-		setImageBase64(img);
-	});
-	
-	if(imageBase64) {
+	if(img) {
 		return (
 			<Image
-				src={`data: image/jpeg; base64, ${imageBase64}`}
+				src={`data: image/jpeg; base64, ${img}`}
 				alt='Cat pic'
 				width={512}
 				height={512}

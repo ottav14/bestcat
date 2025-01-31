@@ -18,7 +18,6 @@ const Home = () => {
 			setBase64(data.imageBase64);
 			setFetched(true);
 			setCount(data.count);
-			console.log(data.count);
 		}
 	}
 
