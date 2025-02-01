@@ -6,7 +6,7 @@ import styles from './LeaderboardEntry.module.css';
 
 const LeaderboardEntry = ({ img, count }) => {
 
-	if(img && count) {
+	if(img) {
 		return (
 			<div className={styles.main}>
 				<Image

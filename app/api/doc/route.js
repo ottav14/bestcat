@@ -21,17 +21,18 @@ export async function GET() {
 
 	// Fetch count
 	const getCount = async (id) => { 
-		const countJSON = await counts_collection.findOne({ _id: fileId });
+		const countJSON = await counts_collection.findOne({ _id: id });
 		return countJSON.value;
 	};
-	const currentCount = await getCount(imageId);
+	const currentCount = await getCount(fileId);
 
 	// Fetch image
 	const base64 = await fetchImage(client, fileId);
 
 	const responseJSON = {
 		imageBase64: base64,
-		count: currentCount
+		count: currentCount,
+		id: imageId
 	};
 
 	return new Response(JSON.stringify(responseJSON), { 
