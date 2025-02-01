@@ -2,8 +2,6 @@ import styles from './Button.module.css';
 
 const Button = ({ backgroundImage, backgroundColor, action }) => {
 
-	console.log(backgroundColor);
-
 	return (
 		<button 
 			className={styles.main}

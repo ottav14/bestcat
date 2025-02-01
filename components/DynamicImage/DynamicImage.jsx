@@ -3,14 +3,17 @@ import styles from './DynamicImage.module.css';
 
 const DynamicImage = ({ img }) => {
 
+	const onMobile = (window.innerWidth <= 768);
+	const imageResolution = onMobile ? 256 : 512;
+
 	if(img) {
 		return (
 			<Image
 				className={styles.img}
 				src={`data: image/jpeg; base64, ${img}`}
 				alt='Cat pic'
-				width={512}
-				height={512}
+				width={imageResolution}
+				height={imageResolution}
 				priority={true}
 			/>
 		);

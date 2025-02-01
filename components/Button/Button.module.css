@@ -16,3 +16,10 @@
 	border-radius: 10px;
 
 }
+
+@media(max-width: 768px) {
+	.main {
+		width: 122px;
+		height: 60px;
+	}
+}

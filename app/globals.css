@@ -22,8 +22,3 @@ body {
 
 }
 
-button {
-	font-size: 16pt;
-	background-color: var(--button-color);
-}
-
