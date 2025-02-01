@@ -47,6 +47,9 @@ export async function GET() {
 
 	return new Response(JSON.stringify(responseJSON), { 
 		status: 200, 
-		headers: { 'Content-Type': 'application/json' }
+		headers: { 
+			'Content-Type': 'application/json' 
+			"Cache-Control": "no-store, max-age=0, must-revalidate" 
+		}
 	});
 }
