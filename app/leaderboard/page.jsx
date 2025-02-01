@@ -2,6 +2,7 @@ import { MongoClient } from 'mongodb';
 import styles from './page.module.css';
 import fetchLeaderboard from '../../scripts/fetchLeaderboard';
 import LeaderboardEntry from '../../components/LeaderboardEntry/LeaderboardEntry.jsx';
+import NavButton from '../../components/NavButton/NavButton.jsx';
 
 const uri = process.env.MONGODB_URI;
 
@@ -13,17 +14,15 @@ const Leaderboard = async () => {
 	const entries = await fetchLeaderboard(client);
 
 	return (
-		<div className={styles.page}>
-			<main className={styles.main}>
-				<div className={styles.sidebar}>
-					<a href="/">Bestcat</a>
-				</div>
+		<main className={styles.main}>
+			<NavButton text='Bestcat' link='/' />
+			<div className={styles.leaderboard}>
 				<p className={styles.title}>Leaderboard</p>
 				{entries.map((entry) => (
 					<LeaderboardEntry img={entry.base64} count={entry.count} />
 				))}
-			</main>
-		</div>
+			</div>
+		</main>
 	);
 
 
