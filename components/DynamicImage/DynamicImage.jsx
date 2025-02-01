@@ -6,6 +6,7 @@ const DynamicImage = ({ img }) => {
 	if(img) {
 		return (
 			<Image
+				className={styles.img}
 				src={`data: image/jpeg; base64, ${img}`}
 				alt='Cat pic'
 				width={512}

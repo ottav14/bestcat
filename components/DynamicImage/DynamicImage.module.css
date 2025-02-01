@@ -4,3 +4,10 @@
 	height: 512px;
 
 }
+
+.img {
+	
+	border: 3px solid #000;
+	border-radius: 10px;
+
+}

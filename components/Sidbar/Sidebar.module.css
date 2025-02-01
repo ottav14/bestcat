@@ -1,0 +1,24 @@
+.sidebar {
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 20px;
+	margin: 10px;
+	background-color: var(--button-color);
+	border: none;
+	border-radius: 10px;
+	font-size: 16pt;
+	color: var(--font-color);
+
+}
+
+.siderbar:hover {
+	background-color: #000;
+}
+
+.link {
+
+	text-decoration: none;
+
+}
