@@ -6,8 +6,13 @@ import styles from './LeaderboardEntry.module.css';
 
 const LeaderboardEntry = ({ img, count }) => {
 
-	const onMobile = (window.innerWidth <= 768);
+	const [onMobile, setOnMobile] = useState(false);
+
+	useEffect(() => {
+		setOnMobile(window.innerWidth <= 768);
+	});
 	const imageResolution = onMobile ? 48 : 64;
+
 	if(img) {
 		return (
 			<div className={styles.main}>

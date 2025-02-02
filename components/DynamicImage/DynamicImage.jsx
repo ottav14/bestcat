@@ -1,9 +1,17 @@
+'use client'
+
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './DynamicImage.module.css';
 
 const DynamicImage = ({ img }) => {
 
-	const onMobile = (window.innerWidth <= 768);
+	const [onMobile, setOnMobile] = useState(false);
+
+	useEffect(() => {
+		setOnMobile(window.innerWidth <= 768);
+	});
+
 	const imageResolution = onMobile ? 256 : 512;
 
 	if(img) {
