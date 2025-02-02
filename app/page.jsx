@@ -52,6 +52,9 @@ const Home = () => {
 			updateCount(id, '-1');
 	}
 
+	const unsure = () => {
+		setFetched(false);
+	}
 
 	return (
 		<main className={styles.main}>
@@ -66,6 +69,11 @@ const Home = () => {
 						backgroundImage='/thumbs-up.svg' 
 						backgroundColor='#06d6a0'
 						action={upVote}
+					/>
+					<Button 
+						backgroundImage='/question-mark.svg' 
+						backgroundColor='#959595'
+						action={unsure}
 					/>
 					<Button 
 						backgroundImage='/thumbs-down.svg' 

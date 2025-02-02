@@ -1,6 +1,6 @@
 .main {
 
-	width: 250px;
+	width: 163px;
 	height: 100px;
 	background-image: var(--bg-image);
 	background-color: var(--bg-color);
@@ -19,7 +19,7 @@
 
 @media(max-width: 768px) {
 	.main {
-		width: 122px;
+		width: 77px;
 		height: 60px;
 	}
 }
