@@ -9,20 +9,12 @@ import DynamicImage from '../components/DynamicImage/DynamicImage.jsx';
 const Home = () => {
 
 	const [base64, setBase64] = useState('');
-	const [fetched, setFetched] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [rerender, setRerender] = useState(false);
+	const [error, setError] = useState(false);
 	const [id, setId] = useState('');
 	const [count, setCount] = useState(0);
 
-	const fetchDoc = async () => {
-		if(!fetched) {
-			const response = await fetch('/api/doc');
-			const data = await response.json();
-			setBase64(data.imageBase64);
-			setFetched(true);
-			setCount(data.count);
-			setId(data.id);
-		}
-	}
 
 	const updateCount = async (_id, _parity) => {
 
@@ -37,23 +29,37 @@ const Home = () => {
 	}
 
 	useEffect(() => {
+		const fetchDoc = async () => {
+			try {
+				const response = await fetch('/api/doc');
+				const data = await response.json();
+				setBase64(data.imageBase64);
+				setFetched(true);
+				setCount(data.count);
+				setId(data.id);
+			} catch(error) {
+				setError(error.message);
+			} finally {
+				setLoading(false);
+			}
+		}
 		fetchDoc();
-	});
+	}, [rerender]);
 
 	const upVote = () => {
-		setFetched(false);
+		setRerender(!rerender);
 		if(id)
 			updateCount(id, '1');
 	}
 
 	const downVote = () => {
-		setFetched(false);
+		setRerender(!rerender);
 		if(id)
 			updateCount(id, '-1');
 	}
 
 	const unsure = () => {
-		setFetched(false);
+		setRerender(!rerender);
 	}
 
 	return (
@@ -63,7 +69,7 @@ const Home = () => {
 				<div className={styles.title}>
 					Bestcat
 				</div>
-				{base64 ? <DynamicImage img={base64} /> : <div className={styles.placeHolder} />}
+				{!loading ? <DynamicImage img={base64} /> : <div className={styles.placeHolder} />}
 				<div className={styles.buttonContainer}>
 					<Button 
 						backgroundImage='/thumbs-up.svg' 
