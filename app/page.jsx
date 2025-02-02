@@ -9,6 +9,7 @@ import DynamicImage from '../components/DynamicImage/DynamicImage.jsx';
 const Home = () => {
 
 	const [base64, setBase64] = useState('');
+	const [apiResponse, setApiResponse] = useState({});
 	const [loading, setLoading] = useState(false);
 	const [rerender, setRerender] = useState(false);
 	const [error, setError] = useState(false);
@@ -17,15 +18,17 @@ const Home = () => {
 
 
 	const updateCount = async (_id, _parity) => {
-
-		const response = await fetch('/api/update', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ id: _id, parity: _parity })
-		});
-		const responseJSON = await response.json();
-		console.log(responseJSON);
-
+		try {
+			const response = await fetch('/api/update', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ id: _id, parity: _parity })
+			});
+			const responseJSON = await response.json();
+			console.log(responseJSON);
+		} catch(error) {
+			console.error(error);
+		}
 	}
 
 	useEffect(() => {
@@ -33,14 +36,12 @@ const Home = () => {
 			try {
 				const response = await fetch('/api/doc');
 				const data = await response.json();
+				setLoading(false);
 				setBase64(data.imageBase64);
-				setFetched(true);
 				setCount(data.count);
 				setId(data.id);
 			} catch(error) {
 				setError(error.message);
-			} finally {
-				setLoading(false);
 			}
 		}
 		fetchDoc();
@@ -48,8 +49,10 @@ const Home = () => {
 
 	const upVote = () => {
 		setRerender(!rerender);
+		console.log(id);
 		if(id)
 			updateCount(id, '1');
+
 	}
 
 	const downVote = () => {
