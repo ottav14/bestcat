@@ -6,14 +6,16 @@ import styles from './LeaderboardEntry.module.css';
 
 const LeaderboardEntry = ({ img, count }) => {
 
+	const onMobile = (window.innerWidth <= 768);
+	const imageResolution = onMobile ? 48 : 64;
 	if(img) {
 		return (
 			<div className={styles.main}>
 				<Image
 					src={`data: image/jpeg; base64, ${img}`}
 					alt='Cat pic'
-					width={64}
-					height={64}
+					width={imageResolution}
+					height={imageResolution}
 					priority={true}
 				/>
 				<p className={styles.count}>{count}</p>
