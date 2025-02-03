@@ -34,11 +34,18 @@
 	background-color: #000;
 	border: 2.5px solid #000;
 	border-radius: 10px;
+	width: 512px;
+	height: 512px;
 
 }
 
 @media(max-width: 768px) {
 	.title {
 		font-size: 24pt;
+	}
+
+	.img {
+		width: 256px;
+		height: 256px;
 	}
 }
