@@ -7,15 +7,18 @@
 
 .left, .leftInactive, .min, .dots, .number, .active, .max, .right {
 
-	width: 30px;
-	height: 30px;
+	height: 40px;
 	margin-left: 5px;
 	margin-right: 5px;
+	padding: 10px;
 	border: none;
 	border-radius: 5px;
 	font: var(--font);
 	color: var(--font-color);
 
+}
+
+.left, .right {
 }
 
 .left, .min, .number, .max, .right {
@@ -34,6 +37,7 @@
 
 	background-size: cover;
 	background-position: center;
+	width: 40px;
 
 }
 
@@ -54,8 +58,7 @@
 }
 
 @media(max-width: 768px) {
-	.left, .leftInactive, .min, .dots, .number, .active, .max, .right {
-		width: 25px;
-		font-size: 8pt;
+	.left, .right {
+		display: none;
 	}
 }

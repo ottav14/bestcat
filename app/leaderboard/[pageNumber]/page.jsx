@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import LeaderboardEntry from '../../../components/LeaderboardEntry/LeaderboardEntry.jsx';
 import NavButton from '../../../components/NavButton/NavButton.jsx';
-import PageButton from '../../../components/PageButton/PageButton.jsx';
 import LoadingImage from '../../../components/LoadingImage/LoadingImage.jsx';
 import LeaderboardNav from '../../../components/LeaderboardNav/LeaderboardNav.jsx';
 
