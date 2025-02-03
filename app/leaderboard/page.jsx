@@ -17,8 +17,15 @@ const Leaderboard = () => {
 	const [entries, setEntries] = useState('');	
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
+	const [primaryColor, setPrimaryColor] = useState('');
+	const [secondayColor, setSecondaryColor] = useState('');
 
 	useEffect(() => {
+
+		const rootStyles = getComputedStyle(document.documentElement);
+		setPrimaryColor(rootStyles.getPropertyValue('--accent-1').trim());
+		setSecondaryColor(rootStyles.getPropertyValue('--background-color').trim());
+
 		const getLeaderboard = async () => {
 			try {
 				const response = await fetch('/api/leaderboard/1');
@@ -44,12 +51,13 @@ const Leaderboard = () => {
 				<p className={styles.title}>Leaderboard</p> 
 				<div className={styles.entries}>
 					{entries.map((entry, i) => {
-						const backgroundColor = (i % 2 == 0) ? '#031e26' : '#1f404d';
+						const backgroundColor = (i % 2 == 0) ? primaryColor : secondayColor;
 						return (
 							<LeaderboardEntry img={entry.base64} count={entry.count} bgColor={backgroundColor} key={entry.id} />
 						);
 					})}
 				</div>
+				<PageButton action={incrementPage} />
 			</div>
 		</main>
 	);

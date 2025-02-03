@@ -1,6 +1,7 @@
 import { MongoClient, GridFSBucket, ObjectId } from 'mongodb';
 
 const uri = process.env.MONGODB_URI;
+const entryCount = 15;
 
 const streamToBuffer = async (stream) => {
 	const chunks = [];
@@ -24,7 +25,7 @@ export async function GET(request, { params }) {
 	const docs = await collection
 		.find()
 		.sort({ count: -1 })
-		.limit(10)
+		.limit(entryCount)
 		.toArray();
 
 	const objs = [];

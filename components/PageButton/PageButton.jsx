@@ -1,15 +1,18 @@
 import styles from './PageButton.module.css';
 
-const PageButton = ({ backgroundImage, action }) => {
+const PageButton = ({ action }) => {
 
 	return (
-		<button 
-			className={styles.main}
-			onClick={action}
-			style={{ 
-				'--bg-image': `url(${backgroundImage})`,
-			}}
-		/>
+		<div className={styles.main}>
+			<button 
+				className={styles.backButton}
+				onClick={action}
+			/>
+			<button 
+				className={styles.forwardButton}
+				onClick={action}
+			/>
+		</div>
 	);
 }
 export default PageButton;

@@ -1,12 +1,12 @@
 :root {
-	--background-color: #073b4c;
-	--accent-1: #031e26;
-	--accent-2: #1f404d;
+	--background-color: #1a1a1a;
+	--accent-1: #2a2a2a;
+	--accent-2: #313131;
 	--green: #06d6a0;
 	--red: #ef476f;
 	--button-color: #118ab2;
 	--font: 'Roboto', sans-serif;
-	--font-color: #fff;
+	--font-color: #bebebe;
 }
 
 body {
