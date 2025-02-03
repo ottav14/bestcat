@@ -19,14 +19,14 @@ export async function POST(req) {
 		await client.connect();
 
 		const db = client.db('photos'); 
-		const collection = db.collection('counts');
+		const collection = db.collection('fs.files');
 
 		if(parity === '1') {
-			await collection.updateOne({ _id: fileId }, { $inc: { value: 1 } });
+			await collection.updateOne({ _id: fileId }, { $inc: { count: 1 } });
 			return NextResponse.json({ message: `Successfully incremented: ${id}` }, { status: 200 });
 		}
 		else if(parity === '-1') {
-			await collection.updateOne({ _id: fileId }, { $inc: { value: -1 } });
+			await collection.updateOne({ _id: fileId }, { $inc: { count: -1 } });
 			return NextResponse.json({ message: `Successfully decremented: ${id}` }, { status: 200 });
 		}
 		else {

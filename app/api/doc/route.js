@@ -11,21 +11,14 @@ export async function GET() {
 		await client.connect();
 
 		const db = client.db('photos'); 
-		const image_collection = db.collection('fs.files'); 
-		const counts_collection = db.collection('counts');
+		const collection = db.collection('fs.files'); 
 
 		const randomIndex = Math.floor(Math.random() * imageCount);
 
-		const randomImage = await image_collection.find().skip(randomIndex).limit(1).next();
+		const randomImage = await collection.find().skip(randomIndex).limit(1).next();
 		const imageId = randomImage._id;
 		const fileId = new ObjectId(imageId);
-
-		// Fetch count
-		const getCount = async (id) => { 
-			const countJSON = await counts_collection.findOne({ _id: id });
-			return countJSON.value;
-		};
-		const currentCount = await getCount(fileId);
+		const currentCount = randomImage.count;
 
 		// Fetch image
 		const base64 = await fetchImage(client, fileId);

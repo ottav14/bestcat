@@ -75,7 +75,7 @@ const Home = () => {
 
 		if(loading) {
 			return ( 
-				<div className={styles.placeHolder} />
+				<div className={styles.img} />
 			);
 		}
 
