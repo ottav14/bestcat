@@ -1,10 +1,10 @@
 "use client"
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './page.module.css';
 import Button from '../components/Button/Button.jsx';
 import NavButton from '../components/NavButton/NavButton.jsx';
-import DynamicImage from '../components/DynamicImage/DynamicImage.jsx';
 
 const Home = () => {
 
@@ -15,6 +15,7 @@ const Home = () => {
 	const [error, setError] = useState(false);
 	const [id, setId] = useState('');
 	const [count, setCount] = useState(0);
+	const [onMobile, setOnMobile] = useState(false);
 
 
 	const updateCount = async (_id, _parity) => {
@@ -46,6 +47,7 @@ const Home = () => {
 			}
 		}
 		fetchDoc();
+		setOnMobile(window.innerWidth <= 768);
 	}, [rerender]);
 
 	const upVote = () => {
@@ -77,8 +79,17 @@ const Home = () => {
 			);
 		}
 
+		const imageResolution = onMobile ? 256 : 512;
+
 		return (
-			<DynamicImage img={base64} />
+			<Image 
+				className={styles.img}
+				src={`data: image/jpeg; base64, ${base64}`}
+				alt='Cat pic'
+				width={imageResolution}
+				height={imageResolution}
+				priority={true}
+			/>
 		);
 	}
 
