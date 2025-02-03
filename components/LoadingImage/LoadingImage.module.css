@@ -1,2 +1,33 @@
+.container {
 
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 512px;
+	height: 512px;
+	border-radius: 20px;
+	font-family: var(--font);
+	font-size: 16pt;
+	color: var(--font-color);
+	background-color: var(--accent-3);
+
+}
+
+.img {
+	
+	width: 256px;
+	height: 256px;
+	background-image: url('/cat.svg');
+	background-size: cover;
+
+}
+
+@media(max-width: 768px) {
+	.container {
+		width: 256px;
+		height: 256px;
+		font-size: 10pt;
+	}
+}
 

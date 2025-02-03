@@ -1,6 +1,6 @@
 import styles from './PageButton.module.css';
 
-const PageButton = ({ pageNumber }) => {
+const PageButton = ({ pageNumber, enabled }) => {
 
 	const inc = parseInt(pageNumber)+1;
 	const dec = parseInt(pageNumber)-1;
@@ -12,6 +12,9 @@ const PageButton = ({ pageNumber }) => {
 			<a href={backLink}>
 				<button 
 					className={styles.backButton}
+					style={{
+						backgroundColor: 'black'
+					}}
 				/>
 			</a>
 			<a href={forwardLink}>
@@ -23,5 +26,3 @@ const PageButton = ({ pageNumber }) => {
 	);
 }
 export default PageButton;
-
-

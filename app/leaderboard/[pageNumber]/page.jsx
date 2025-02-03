@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation';
 import LeaderboardEntry from '../../../components/LeaderboardEntry/LeaderboardEntry.jsx';
 import NavButton from '../../../components/NavButton/NavButton.jsx';
 import PageButton from '../../../components/PageButton/PageButton.jsx';
+import LoadingImage from '../../../components/LoadingImage/LoadingImage.jsx';
 
 const uri = process.env.MONGODB_URI;
 
@@ -41,9 +42,23 @@ const Leaderboard = () => {
 
 	}, []);
 
-	console.log(entries);
+	const LeaderBoardEntries = () => {
+		if(loading)
+			return <LoadingImage />
 
-	if(loading) return <div className={styles.message}>loading...</div>;
+		return (
+			<div className={styles.entries}>
+				{entries.map((entry, i) => {
+					const backgroundColor = (i % 2 == 0) ? primaryColor : secondayColor;
+					return (
+						<LeaderboardEntry img={entry.base64} count={entry.count} bgColor={backgroundColor} key={entry.id} />
+					);
+				})}
+				<PageButton pageNumber={pageNumber} />
+			</div>
+		);
+	}
+
 	if(error) return <div className={styles.message}>{error.message}</div>
 	if(entries.error) return <div className={styles.message}>stop {'>'}:(</div>
 	
@@ -52,15 +67,7 @@ const Leaderboard = () => {
 			<NavButton text='Bestcat' link='/' />
 			<div className={styles.leaderboard}>
 				<p className={styles.title}>Leaderboard</p> 
-				<div className={styles.entries}>
-					{entries.map((entry, i) => {
-						const backgroundColor = (i % 2 == 0) ? primaryColor : secondayColor;
-						return (
-							<LeaderboardEntry img={entry.base64} count={entry.count} bgColor={backgroundColor} key={entry.id} />
-						);
-					})}
-				</div>
-				<PageButton pageNumber={pageNumber} />
+				<LeaderBoardEntries />
 			</div>
 		</main>
 	);

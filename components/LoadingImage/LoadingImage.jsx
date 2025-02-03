@@ -14,14 +14,10 @@ const LoadingImage = () => {
 	const imageResolution = onMobile ? 256 : 512;
 
 	return (
-		<Image
-			className={styles.img}
-			src='/thumbs-up.svg'
-			alt='Cat pic'
-			width={imageResolution}
-			height={imageResolution}
-			priority={true}
-		/>
+		<div className={styles.container}>
+			<div className={styles.img} />
+			Loading...
+		</div>
 	);
 }
 export default LoadingImage;

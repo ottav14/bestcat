@@ -17,6 +17,9 @@
 
 .entries {
 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	border-radius: 10px;
 	margin-bottom: 30px;
 	overflow: hidden;

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import Button from '../components/Button/Button.jsx';
 import NavButton from '../components/NavButton/NavButton.jsx';
+import LoadingImage from '../components/LoadingImage/LoadingImage.jsx';
 
 const Home = () => {
 
@@ -75,11 +76,9 @@ const Home = () => {
 
 	const CatPic = () => {
 
-		if(loading) {
-			return ( 
-				<div className={styles.img} />
-			);
-		}
+		if(loading)
+			return <LoadingImage />
+
 		else {
 
 			const imageResolution = onMobile ? 256 : 512;
