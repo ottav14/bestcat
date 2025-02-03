@@ -48,12 +48,14 @@ const Leaderboard = () => {
 
 		return (
 			<div className={styles.entries}>
-				{entries.map((entry, i) => {
-					const backgroundColor = (i % 2 == 0) ? primaryColor : secondayColor;
-					return (
-						<LeaderboardEntry img={entry.base64} count={entry.count} bgColor={backgroundColor} key={entry.id} />
-					);
-				})}
+				<div className={styles.entryContainer}>
+					{entries.map((entry, i) => {
+						const backgroundColor = (i % 2 == 0) ? primaryColor : secondayColor;
+						return (
+							<LeaderboardEntry img={entry.base64} count={entry.count} bgColor={backgroundColor} key={entry.id} />
+						);
+					})}
+				</div>
 				<LeaderboardNav pageNumber={pageNumber} />
 			</div>
 		);

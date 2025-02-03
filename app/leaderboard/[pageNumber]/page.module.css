@@ -19,11 +19,17 @@
 
 	display: flex;
 	flex-direction: column;
-	width: 80vw;
 	align-items: center;
+
+}
+
+.entryContainer {
+
+	width: 80vw;
 	border-radius: 10px;
 	margin-bottom: 30px;
 	overflow: hidden;
+
 
 }
 
