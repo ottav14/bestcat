@@ -15,6 +15,14 @@
 
 }
 
+.entries {
+
+	border: 2px solid #000;
+	border-radius: 10px;
+	margin-bottom: 30px;
+
+}
+
 @media(max-width: 768px) {
 	.title {
 		font-size: 16pt;

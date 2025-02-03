@@ -10,24 +10,19 @@ const DynamicImage = ({ img }) => {
 
 	useEffect(() => {
 		setOnMobile(window.innerWidth <= 768);
-	});
+	}, []);
 
 	const imageResolution = onMobile ? 256 : 512;
 
-	if(img) {
-		return (
-			<Image
-				className={styles.img}
-				src={`data: image/jpeg; base64, ${img}`}
-				alt='Cat pic'
-				width={imageResolution}
-				height={imageResolution}
-				priority={true}
-			/>
-		);
-	}
-	else {
-		return <div className={styles.placeHolder} />;
-	}
+	return (
+		<Image
+			className={styles.img}
+			src={`data: image/jpeg; base64, ${img}`}
+			alt='Cat pic'
+			width={imageResolution}
+			height={imageResolution}
+			priority={true}
+		/>
+	);
 }
 export default DynamicImage;

@@ -10,7 +10,7 @@ const Home = () => {
 
 	const [base64, setBase64] = useState('');
 	const [apiResponse, setApiResponse] = useState({});
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [rerender, setRerender] = useState(false);
 	const [error, setError] = useState(false);
 	const [id, setId] = useState('');
@@ -36,12 +36,13 @@ const Home = () => {
 			try {
 				const response = await fetch('/api/doc');
 				const data = await response.json();
-				setLoading(false);
 				setBase64(data.imageBase64);
 				setCount(data.count);
 				setId(data.id);
 			} catch(error) {
 				setError(error.message);
+			} finally {
+				setLoading(false);
 			}
 		}
 		fetchDoc();
@@ -49,6 +50,7 @@ const Home = () => {
 
 	const upVote = () => {
 		setRerender(!rerender);
+		setLoading(true);
 		console.log(id);
 		if(id)
 			updateCount(id, '1');
@@ -57,12 +59,27 @@ const Home = () => {
 
 	const downVote = () => {
 		setRerender(!rerender);
+		setLoading(true);
 		if(id)
 			updateCount(id, '-1');
 	}
 
 	const unsure = () => {
 		setRerender(!rerender);
+		setLoading(true);
+	}
+
+	const CatPic = () => {
+
+		if(loading) {
+			return ( 
+				<div className={styles.placeHolder} />
+			);
+		}
+
+		return (
+			<DynamicImage img={base64} />
+		);
 	}
 
 	return (
@@ -72,7 +89,7 @@ const Home = () => {
 				<div className={styles.title}>
 					Bestcat
 				</div>
-				{!loading ? <DynamicImage img={base64} /> : <div className={styles.placeHolder} />}
+				<CatPic />
 				<div className={styles.buttonContainer}>
 					<Button 
 						backgroundImage='/thumbs-up.svg' 

@@ -42,9 +42,11 @@ const Leaderboard = () => {
 			<NavButton text='Bestcat' link='/' />
 			<div className={styles.leaderboard}>
 				<p className={styles.title}>Leaderboard</p> 
-				{entries.map((entry) => (
-					<LeaderboardEntry img={entry.base64} count={entry.count} key={entry.id} />
-				))}
+				<div className={styles.entries}>
+					{entries.map((entry) => (
+						<LeaderboardEntry img={entry.base64} count={entry.count} key={entry.id} />
+					))}
+				</div>
 			</div>
 		</main>
 	);
