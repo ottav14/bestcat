@@ -16,6 +16,7 @@ const Home = () => {
 	const [id, setId] = useState('');
 	const [count, setCount] = useState(0);
 	const [onMobile, setOnMobile] = useState(false);
+	const [test, setTest] = useState(false);
 
 	const updateCount = async (_id, _parity) => {
 		try {
@@ -39,6 +40,8 @@ const Home = () => {
 				setBase64(data.imageBase64);
 				setCount(data.count);
 				setId(data.id);
+				const mobileCheck = (window.innerWidth <= 768);
+				setOnMobile(mobileCheck);
 			} catch(error) {
 				setError(error.message);
 			} finally {
@@ -46,7 +49,7 @@ const Home = () => {
 			}
 		}
 		fetchDoc();
-		setOnMobile(window.innerWidth <= 768);
+
 	}, [rerender]);
 
 	const upVote = () => {
@@ -77,19 +80,21 @@ const Home = () => {
 				<div className={styles.img} />
 			);
 		}
+		else {
 
-		const imageResolution = onMobile ? 256 : 512;
+			const imageResolution = onMobile ? 256 : 512;
 
-		return (
-			<Image 
-				className={styles.img}
-				src={`data: image/jpeg; base64, ${base64}`}
-				alt='Cat pic'
-				width={imageResolution}
-				height={imageResolution}
-				priority={true}
-			/>
-		);
+			return (
+				<Image 
+					className={styles.img}
+					src={`data: image/jpeg; base64, ${base64}`}
+					width={imageResolution}
+					height={imageResolution}
+					alt='Cat pic'
+					priority={true}
+				/>
+			);
+		}
 	}
 
 	return (
