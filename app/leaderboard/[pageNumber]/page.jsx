@@ -2,23 +2,20 @@
 
 import styles from './page.module.css';
 import { useEffect, useState } from 'react';
-import LeaderboardEntry from '../../components/LeaderboardEntry/LeaderboardEntry.jsx';
-import NavButton from '../../components/NavButton/NavButton.jsx';
-import PageButton from '../../components/PageButton/PageButton.jsx';
+import LeaderboardEntry from '../../../components/LeaderboardEntry/LeaderboardEntry.jsx';
+import NavButton from '../../../components/NavButton/NavButton.jsx';
+import PageButton from '../../../components/PageButton/PageButton.jsx';
 
 const uri = process.env.MONGODB_URI;
 
-const incrementPage = () => {
-	return;
-}
-
-const Leaderboard = () => {
+const Leaderboard = ({ params }) => {
 
 	const [entries, setEntries] = useState('');	
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
 	const [primaryColor, setPrimaryColor] = useState('');
 	const [secondayColor, setSecondaryColor] = useState('');
+	const [pageNumber, setPageNumber] = useState(0);
 
 	useEffect(() => {
 
@@ -38,6 +35,17 @@ const Leaderboard = () => {
 			}
 		}
 		getLeaderboard();
+
+		const getPageNumber = async () => {
+			try {
+				const { pageNumber } = await params;
+				setPageNumber(pageNumber);
+			} catch(error) {
+				console.error(error);
+			} 
+		}
+		getPageNumber();
+
 	}, []);
 
 
@@ -57,7 +65,7 @@ const Leaderboard = () => {
 						);
 					})}
 				</div>
-				<PageButton action={incrementPage} />
+				<PageButton pageNumber={pageNumber} />
 			</div>
 		</main>
 	);

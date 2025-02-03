@@ -17,7 +17,6 @@ const Home = () => {
 	const [count, setCount] = useState(0);
 	const [onMobile, setOnMobile] = useState(false);
 
-
 	const updateCount = async (_id, _parity) => {
 		try {
 			const response = await fetch('/api/update', {
@@ -95,7 +94,7 @@ const Home = () => {
 
 	return (
 		<main className={styles.main}>
-			<NavButton text='Leaderboard' link='/leaderboard' />
+			<NavButton text='Leaderboard' link='/leaderboard/1' />
 			<div className={styles.interfaceContainer}>
 				<div className={styles.title}>
 					Bestcat
