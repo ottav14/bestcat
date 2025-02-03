@@ -3,8 +3,11 @@ import styles from './LeaderboardNav.module.css';
 const LeaderboardNav = ({ pageNumber }) => {
 
 	const p = parseInt(pageNumber);
+	const buttonCount1 = (window.innerWidth <= 768) ? 3 : 4;
+	const buttonCount2 = (window.innerWidth <= 768) ? 3 : 6;
 
-	if(p >= 5) {
+	if(p >= buttonCount2-1) {
+		const numbers = Array.from({ length: buttonCount1 }, (_, i) => p-1+i);
 		return (
 			<div className={styles.main}>
 				<a href={'/leaderboard/'+(p-1)}>
@@ -14,16 +17,16 @@ const LeaderboardNav = ({ pageNumber }) => {
 					<button className={styles.min}>{0}</button>
 				</a>
 				<button className={styles.dots} />
-				<a href={'/leaderboard/'+(p-1)}>
-					<button className={styles.number}>{p-1}</button>
-				</a>
-				<button className={styles.active}>{p}</button>
-				<a href={'/leaderboard/'+(p+1)}>
-					<button className={styles.number}>{p+1}</button>
-				</a>
-				<a href={'/leaderboard/'+(p+2)}>
-					<button className={styles.number}>{p+2}</button>
-				</a>
+				{numbers.map((n, i) => {
+					if(i === 1)
+						return <button className={styles.active} key={n}>{n}</button>
+
+					return (
+						<a href={'/leaderboard/'+n} key={n}>
+							<button className={styles.number}>{n}</button>
+						</a>
+					);	
+				})}
 				<button className={styles.dots} />
 				<a href={'/leaderboard/150'}>
 					<button className={styles.max}>{150}</button>
@@ -35,7 +38,7 @@ const LeaderboardNav = ({ pageNumber }) => {
 		);
 	}
 	else {
-		const numbers = [0, 1, 2, 3, 4, 5];
+		const numbers = Array.from({ length: buttonCount2 }, (_, i) => i);
 		const ActiveLeft = () => {
 			return (
 				<a href={'/leaderboard/'+(p-1)}>
