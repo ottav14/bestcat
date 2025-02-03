@@ -23,6 +23,16 @@
 
 }
 
+.message {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+
+}
+
 @media(max-width: 768px) {
 	.title {
 		font-size: 16pt;

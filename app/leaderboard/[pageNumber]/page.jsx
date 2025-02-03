@@ -2,20 +2,23 @@
 
 import styles from './page.module.css';
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import LeaderboardEntry from '../../../components/LeaderboardEntry/LeaderboardEntry.jsx';
 import NavButton from '../../../components/NavButton/NavButton.jsx';
 import PageButton from '../../../components/PageButton/PageButton.jsx';
 
 const uri = process.env.MONGODB_URI;
 
-const Leaderboard = ({ params }) => {
+const Leaderboard = () => {
 
 	const [entries, setEntries] = useState('');	
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
 	const [primaryColor, setPrimaryColor] = useState('');
 	const [secondayColor, setSecondaryColor] = useState('');
-	const [pageNumber, setPageNumber] = useState(0);
+
+	const params = useParams();
+	const { pageNumber } = params;
 
 	useEffect(() => {
 
@@ -25,7 +28,7 @@ const Leaderboard = ({ params }) => {
 
 		const getLeaderboard = async () => {
 			try {
-				const response = await fetch('/api/leaderboard/1');
+				const response = await fetch(`/api/leaderboard/${pageNumber}`);
 				const data = await response.json();
 				setEntries(data);
 			} catch(error) {
@@ -36,21 +39,13 @@ const Leaderboard = ({ params }) => {
 		}
 		getLeaderboard();
 
-		const getPageNumber = async () => {
-			try {
-				const { pageNumber } = await params;
-				setPageNumber(pageNumber);
-			} catch(error) {
-				console.error(error);
-			} 
-		}
-		getPageNumber();
-
 	}, []);
 
+	console.log(entries);
 
-	if(loading) return <div>loading...</div>;
-	if(error) return <div>{error.message}</div>
+	if(loading) return <div className={styles.message}>loading...</div>;
+	if(error) return <div className={styles.message}>{error.message}</div>
+	if(entries.error) return <div className={styles.message}>stop {'>'}:(</div>
 	
 	return (
 		<main className={styles.main}>

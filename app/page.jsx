@@ -99,7 +99,7 @@ const Home = () => {
 
 	return (
 		<main className={styles.main}>
-			<NavButton text='Leaderboard' link='/leaderboard/1' />
+			<NavButton text='Leaderboard' link='/leaderboard/0' />
 			<div className={styles.interfaceContainer}>
 				<div className={styles.title}>
 					Bestcat

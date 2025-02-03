@@ -2,13 +2,11 @@ import styles from './PageButton.module.css';
 
 const PageButton = ({ pageNumber }) => {
 
-	const inc = pageNumber+1;
-	const dec = pageNumber-1;
+	const inc = parseInt(pageNumber)+1;
+	const dec = parseInt(pageNumber)-1;
 	const forwardLink = `/leaderboard/${inc}`;
 	const backLink = `/leaderboard/${dec}`;
 	
-	console.log(pageNumber);
-
 	return (
 		<div className={styles.main}>
 			<a href={backLink}>
