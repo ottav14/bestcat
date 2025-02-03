@@ -43,9 +43,12 @@ const Leaderboard = () => {
 			<div className={styles.leaderboard}>
 				<p className={styles.title}>Leaderboard</p> 
 				<div className={styles.entries}>
-					{entries.map((entry) => (
-						<LeaderboardEntry img={entry.base64} count={entry.count} key={entry.id} />
-					))}
+					{entries.map((entry, i) => {
+						const backgroundColor = (i % 2 == 0) ? '#031e26' : '#1f404d';
+						return (
+							<LeaderboardEntry img={entry.base64} count={entry.count} bgColor={backgroundColor} key={entry.id} />
+						);
+					})}
 				</div>
 			</div>
 		</main>

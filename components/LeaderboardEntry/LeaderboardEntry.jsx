@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './LeaderboardEntry.module.css';
 
-const LeaderboardEntry = ({ img, count }) => {
+const LeaderboardEntry = ({ img, count, bgColor }) => {
 
 	const [onMobile, setOnMobile] = useState(false);
 
@@ -15,7 +15,12 @@ const LeaderboardEntry = ({ img, count }) => {
 
 	if(img) {
 		return (
-			<div className={styles.main}>
+			<div 
+				className={styles.main}
+				style={{
+					backgroundColor: bgColor
+				}}
+			>
 				<Image
 					src={`data: image/jpeg; base64, ${img}`}
 					alt='Cat pic'
