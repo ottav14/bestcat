@@ -7,6 +7,7 @@ import LeaderboardEntry from '../../../components/LeaderboardEntry/LeaderboardEn
 import NavButton from '../../../components/NavButton/NavButton.jsx';
 import PageButton from '../../../components/PageButton/PageButton.jsx';
 import LoadingImage from '../../../components/LoadingImage/LoadingImage.jsx';
+import LeaderboardNav from '../../../components/LeaderboardNav/LeaderboardNav.jsx';
 
 const uri = process.env.MONGODB_URI;
 
@@ -54,7 +55,7 @@ const Leaderboard = () => {
 						<LeaderboardEntry img={entry.base64} count={entry.count} bgColor={backgroundColor} key={entry.id} />
 					);
 				})}
-				<PageButton pageNumber={pageNumber} />
+				<LeaderboardNav pageNumber={pageNumber} />
 			</div>
 		);
 	}

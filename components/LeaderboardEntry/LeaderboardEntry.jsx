@@ -22,6 +22,7 @@ const LeaderboardEntry = ({ img, count, bgColor }) => {
 				}}
 			>
 				<Image
+					className={styles.img}
 					src={`data: image/jpeg; base64, ${img}`}
 					alt='Cat pic'
 					width={imageResolution}

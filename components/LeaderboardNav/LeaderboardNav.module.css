@@ -1,0 +1,61 @@
+.main {
+
+	display: flex;
+	padding-top: 20px;
+
+}
+
+.left, .leftInactive, .min, .dots, .number, .active, .max, .right {
+
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: none;
+	border-radius: 5px;
+	font: var(--font);
+	color: var(--font-color);
+
+}
+
+.left, .min, .number, .max, .right {
+	background-color: var(--accent-2);
+}
+
+.dots, .leftInactive {
+	background-color: var(--accent-5);
+}
+
+.active {
+	background-color: var(--accent-4);
+}
+
+.dots, .left, .leftInactive, .right {
+
+	background-size: cover;
+	background-position: center;
+
+}
+
+.dots {
+	background-image: url('/hdots.svg');
+}
+
+.left, .leftInactive{
+	background-image: url('/left-arrow.svg');
+}
+
+.right {
+	background-image: url('/right-arrow.svg');
+}
+
+.left:hover, .min:hover, .number:hover, .max:hover, .right:hover {
+	background-color: var(--highlight);
+}
+
+@media(max-width: 768px) {
+	.left, .leftInactive, .min, .dots, .number, .active, .max, .right {
+		width: 25px;
+		font-size: 8pt;
+	}
+}
