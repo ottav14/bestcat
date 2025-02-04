@@ -31,8 +31,10 @@
 
 .img {
 
+	margin-top: 95px;
 	background-color: #000;
 	border-radius: 20px;
+	overflow: hidden;
 	width: 512px;
 	height: 512px;
 

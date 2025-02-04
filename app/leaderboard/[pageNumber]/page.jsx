@@ -4,7 +4,6 @@ import styles from './page.module.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import LeaderboardEntry from '../../../components/LeaderboardEntry/LeaderboardEntry.jsx';
-import NavButton from '../../../components/NavButton/NavButton.jsx';
 import LoadingImage from '../../../components/LoadingImage/LoadingImage.jsx';
 import LeaderboardNav from '../../../components/LeaderboardNav/LeaderboardNav.jsx';
 
@@ -44,11 +43,15 @@ const Leaderboard = () => {
 
 	const LeaderBoardEntries = () => {
 		if(loading)
-			return <LoadingImage />
+			return <div className={styles.leaderboard}><LoadingImage /></div>;
 
 		return (
-			<div className={styles.entries}>
-				<div className={styles.entryContainer}>
+			<div className={styles.leaderboard}>
+				<div className={styles.labels}>
+					<div className={styles.catLabel}>Cat</div>
+					<div className={styles.ratingLabel}>Rating</div>
+				</div>
+				<div className={styles.entries}>
 					{entries.map((entry, i) => {
 						const backgroundColor = (i % 2 == 0) ? primaryColor : secondayColor;
 						return (
@@ -66,11 +69,7 @@ const Leaderboard = () => {
 	
 	return (
 		<main className={styles.main}>
-			<NavButton text='Bestcat' link='/' />
-			<div className={styles.leaderboard}>
-				<p className={styles.title}>Leaderboard</p> 
-				<LeaderBoardEntries />
-			</div>
+			<LeaderBoardEntries />
 		</main>
 	);
 

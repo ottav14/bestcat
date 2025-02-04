@@ -52,9 +52,9 @@ const LeaderboardNav = ({ pageNumber }) => {
 
 		return (
 			<div className={styles.main}>
-				{(p == 0) ? <InactiveLeft /> : <ActiveLeft />}
+				{(p === 0 && window.innerWidth > 768) ? <InactiveLeft /> : <ActiveLeft />}
 				{numbers.map((n, i) => {
-					if(i == p)
+					if(i === p)
 						return <button className={styles.active} key={i}>{i}</button>; 
 
 					return (

@@ -1,5 +1,5 @@
 import './globals.css';
-import Sidebar from '../components/Sidbar/Sidebar.jsx';
+import NavBar from '../components/NavBar/NavBar.jsx';
 
 export const metadata = {
 	title: 'Bestcat',
@@ -13,6 +13,7 @@ export default function RootLayout({ children }) {
 				<link rel="icon" href="favicon.ico" type="image/x-icon" />
 			</head>
 			<body>
+				<NavBar />
 				{children}
 			</body>
 		</html>

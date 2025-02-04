@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './page.module.css';
 import Button from '../components/Button/Button.jsx';
-import NavButton from '../components/NavButton/NavButton.jsx';
 import LoadingImage from '../components/LoadingImage/LoadingImage.jsx';
 
 const Home = () => {
@@ -77,32 +76,29 @@ const Home = () => {
 	const CatPic = () => {
 
 		if(loading)
-			return <LoadingImage />
+			return <div className={styles.img}><LoadingImage /></div>;
 
 		else {
 
-			const imageResolution = onMobile ? 256 : 512;
+			const imageResolution = onMobile ? 350 : 512;
 
 			return (
-				<Image 
-					className={styles.img}
-					src={`data: image/jpeg; base64, ${base64}`}
-					width={imageResolution}
-					height={imageResolution}
-					alt='Cat pic'
-					priority={true}
-				/>
+				<div className={styles.img}>
+					<Image 
+						src={`data: image/jpeg; base64, ${base64}`}
+						width={imageResolution}
+						height={imageResolution}
+						alt='Cat pic'
+						priority={true}
+					/>
+				</div>
 			);
 		}
 	}
 
 	return (
 		<main className={styles.main}>
-			<NavButton text='Leaderboard' link='/leaderboard/0' />
 			<div className={styles.interfaceContainer}>
-				<div className={styles.title}>
-					Bestcat
-				</div>
 				<CatPic />
 				<div className={styles.buttonContainer}>
 					<Button 
