@@ -1,5 +1,6 @@
 import './globals.css';
 import NavBar from '../components/NavBar/NavBar.jsx';
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
 	title: 'Bestcat',
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
 			<body>
 				<NavBar />
 				{children}
+				<Analytics />
 			</body>
 		</html>
 	)
