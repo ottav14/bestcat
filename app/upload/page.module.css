@@ -41,6 +41,13 @@
 	margin-bottom: 20px;
 }
 
+.nameInput, .breedInput {
+	border-radius: 5px;
+	font: var(--font);
+	font-size: 16pt;
+	color: #000;
+}
+
 .submitButton {
 	background-color: var(--highlight);
 	padding: 10px;

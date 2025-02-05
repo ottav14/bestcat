@@ -1,12 +1,25 @@
 'use client'
 
 import styles from './page.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const Upload = () => {
 
 	const [image, setImage] = useState(null);
+	const [name, setName] = useState('');
+	const [breed, setBreed] = useState('');
+
+	useEffect(() => {
+		const submitButton = document.getElementById('submit');
+		if(image && name && breed) {
+			submitButton.disabled = false;
+			submitButton.addEventListener('click', attemptSubmission);
+		}
+		else
+			submitButton.disabled = true;
+		console.log(image, name, breed);
+	}, [image, name, breed]);
 
 	const attemptSubmission = () => {
 		
@@ -37,16 +50,22 @@ const Upload = () => {
 			const imageUrl = URL.createObjectURL(file);
 			const base64 = await getBase64FromUrl(imageUrl);
 			setImage(base64);
-			document.getElementById('submit').disabled = false;
-			document.getElementById('submit').addEventListener('click', attemptSubmission);
 
 		}
+
 	};
+
+	const handleNameChange = (e) => {
+		setName(e.target.value);
+	}
+
+	const handleBreedChange = (e) => {
+		setBreed(e.target.value);
+	}
 
 	const Submission = () => {
 
 		if(image) {
-			console.log(image);
 			return (
 				<Image 
 					className={styles.img} 
@@ -78,6 +97,18 @@ const Upload = () => {
 		<main className={styles.main}>
 			<div className={styles.submission}>
 				<Submission />
+				<input
+					className={styles.nameInput}
+					type='text'
+					onChange={handleNameChange}
+					placeholder='Name'
+				/>
+				<input
+					className={styles.breedInput}
+					type='text'
+					onChange={handleBreedChange}
+					placeholder='Breed'
+				/>
 				<button className={styles.submitButton} id='submit' disabled>Submit</button>
 			</div>
 		</main>
