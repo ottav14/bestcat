@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 const NavBar = () => {
 
 	const pathname = usePathname();
-	console.log(pathname);
 
 	return (
 		<div className={styles.main}>
@@ -14,7 +13,10 @@ const NavBar = () => {
 				<button className={pathname === '/' ? styles.active : styles.button}>Bestcat</button>
 			</a>
 			<a href='/leaderboard/0'>
-				<button className={pathname === '/' ? styles.button : styles.active}>Leaderboard</button>
+				<button className={pathname[1] === 'l' ? styles.active : styles.button}>Leaderboard</button>
+			</a>
+			<a href='/upload'>
+				<button className={pathname[1] === 'u' ? styles.active : styles.button}>Upload</button>
 			</a>
 		</div>
 	);

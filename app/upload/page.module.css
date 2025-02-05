@@ -1,0 +1,37 @@
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.interface {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 60vw;
+	height: 80vh;
+}
+
+.input {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 25vw;
+	height: 25vw;
+	background-color: var(--accent-3);
+	border-radius: 20px;
+	font: var(--font);
+	font-size: 24pt;
+	color: var(--font-color);
+}
+
+.inputImage {
+	width: 18vw;
+	height: 18vw;
+	background-image: url('/cat.svg');
+	background-position: center;
+	background-size: cover;
+}
