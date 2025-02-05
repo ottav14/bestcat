@@ -26,6 +26,7 @@ export async function GET() {
 		const responseJSON = {
 			imageBase64: base64,
 			count: currentCount,
+			name: randomImage.name,
 			id: imageId
 		};
 

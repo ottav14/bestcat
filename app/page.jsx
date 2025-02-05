@@ -9,6 +9,7 @@ import LoadingImage from '../components/LoadingImage/LoadingImage.jsx';
 const Home = () => {
 
 	const [base64, setBase64] = useState('');
+	const [name, setName] = useState('');
 	const [apiResponse, setApiResponse] = useState({});
 	const [loading, setLoading] = useState(true);
 	const [rerender, setRerender] = useState(false);
@@ -38,6 +39,7 @@ const Home = () => {
 				const response = await fetch('/api/doc');
 				const data = await response.json();
 				setBase64(data.imageBase64);
+				setName(data.name);
 				setCount(data.count);
 				setId(data.id);
 				const mobileCheck = (window.innerWidth <= 768);
@@ -46,11 +48,16 @@ const Home = () => {
 				setError(error.message);
 			} finally {
 				setLoading(false);
+				console.log(name);
 			}
 		}
 		fetchDoc();
 
 	}, [rerender]);
+
+	useEffect(() => {
+		console.log(name);
+	}, [name]);
 
 	const upVote = () => {
 		setRerender(!rerender);
@@ -99,7 +106,10 @@ const Home = () => {
 	return (
 		<main className={styles.main}>
 			<div className={styles.interfaceContainer}>
-				<CatPic />
+				<div className={styles.card}>
+					<CatPic />
+					<p className={styles.nameLabel}>{name}</p>
+				</div>
 				<div className={styles.buttonContainer}>
 					<Button 
 						backgroundImage='/thumbs-up.svg' 

@@ -23,6 +23,7 @@ body {
 	height: 20pt;
 	background-color: var(--background-color);
 	border: none;
+	font-family: var(--font);
 	color: var(--font-color);
 	margin: 0;
 
