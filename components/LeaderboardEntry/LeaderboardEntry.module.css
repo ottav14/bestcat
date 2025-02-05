@@ -4,20 +4,29 @@
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
+	font-size: 24pt;
 
 }
 
 .count {
 
-	font-size: 24pt;
+	flex-grow: 1;
 	font-family: var(--font);
 	color: var(--font-color);
-	padding-right: 50px;
+	padding-right: 90px;
+	text-align: right;
 
+}
+
+.name {
+	width: 60px;
+	text-align: center;
 }
 
 .img {
 
-	padding-left: 30px;
+	width: 80px;
+	height: 80px;
+	padding: 0 140px 0 30px;
 
 }
