@@ -14,11 +14,11 @@
 .button, .active {
 
 	background-color: var(--accent-6);
-	font-size: 24pt;
 	color: var(--font-color);
 	padding: 6px 10px 6px 10px;
 	border: none;
 	border-radius: 0;
+	font-size: 24pt;
 	transition: background-color 0.1s ease-in-out;
 
 }
@@ -39,3 +39,12 @@
 
 }
 
+@media(max-width: 768px) {
+	.main {
+		height: 50px;
+	}
+
+	.button, .active {
+		font-size: 18pt;
+	}
+}

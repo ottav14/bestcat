@@ -48,6 +48,12 @@ const Upload = () => {
 	
 	return (
 		<main className={styles.main}>
+			<p className={styles.soon}>coming soon.............</p>
+		</main>
+	);
+
+	return (
+		<main className={styles.main}>
 			<div className={styles.interface}>
 				<PreviewImage />
 				<div className={styles.controls}>
