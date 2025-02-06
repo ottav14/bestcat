@@ -1,21 +1,22 @@
 .main {
 
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding-top: 20px;
 	padding-bottom: 40px;
-	font: var(--font);
 
 }
 
 .left, .leftInactive, .min, .dots, .number, .active, .max, .right {
 
-	height: 40px;
-	margin-left: 5px;
-	margin-right: 5px;
-	padding: 10px;
+	height: 60px;
+	padding: 15px;
+	margin: 10px;
 	border: none;
 	border-radius: 5px;
 	color: var(--font-color);
+	font-size: 16pt;
 
 }
 
@@ -59,6 +60,20 @@
 }
 
 @media(max-width: 768px) {
+
+	.left, .leftInactive, .min, .dots, .number, .active, .max, .right {
+
+		height: 40px;
+		width: 40px;
+		padding: 10px;
+		margin: 5px;
+		border: none;
+		border-radius: 5px;
+		color: var(--font-color);
+		font-size: 12pt;
+
+	}
+
 	.left, .right {
 		display: none;
 	}

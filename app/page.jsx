@@ -16,7 +16,7 @@ const Home = () => {
 	const [error, setError] = useState(false);
 	const [id, setId] = useState('');
 	const [count, setCount] = useState(0);
-	const [onMobile, setOnMobile] = useState(false);
+	const [onMobile, setOnMobile] = useState(true);
 	const [test, setTest] = useState(false);
 
 	const updateCount = async (_id, _parity) => {

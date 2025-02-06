@@ -30,3 +30,18 @@
 	padding: 0 140px 0 30px;
 
 }
+
+@media(max-width: 768px) {
+	.main {
+		font-size: 16pt;
+	}
+
+	.img {
+		padding-right: 60px;
+		padding-left: 0;
+	}
+
+	.count {
+		padding-right: 40px;
+	}
+}
