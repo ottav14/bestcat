@@ -87,7 +87,7 @@ const Home = () => {
 
 		else {
 
-			const imageResolution = onMobile ? 350 : 512;
+			const imageResolution = onMobile ? 350 : 450;
 
 			return (
 				<div className={styles.img}>
@@ -103,29 +103,61 @@ const Home = () => {
 		}
 	}
 
+	if(onMobile) {
+		return (
+			<main className={styles.main}>
+				<div className={styles.interfaceContainer}>
+					<div className={styles.card}>
+						<CatPic />
+						<p className={styles.nameLabel}>{name}</p>
+					</div>
+					<div className={styles.buttonContainer}>
+						<Button 
+							backgroundImage='/thumbs-up.svg' 
+							backgroundColor='#06d6a0'
+							action={upVote}
+						/>
+						<Button 
+							backgroundImage='/question-mark.svg' 
+							backgroundColor='#959595'
+							action={unsure}
+						/>
+						<Button 
+							backgroundImage='/thumbs-down.svg' 
+							backgroundColor='#ef476f'
+							action={downVote}
+						/>
+					</div>
+				</div>
+			</main>
+		);
+	}
+
 	return (
 		<main className={styles.main}>
-			<div className={styles.interfaceContainer}>
-				<div className={styles.card}>
-					<CatPic />
-					<p className={styles.nameLabel}>{name}</p>
-				</div>
-				<div className={styles.buttonContainer}>
-					<Button 
-						backgroundImage='/thumbs-up.svg' 
-						backgroundColor='#06d6a0'
-						action={upVote}
-					/>
-					<Button 
-						backgroundImage='/question-mark.svg' 
-						backgroundColor='#959595'
-						action={unsure}
-					/>
-					<Button 
-						backgroundImage='/thumbs-down.svg' 
-						backgroundColor='#ef476f'
-						action={downVote}
-					/>
+			<div className={styles.container}>
+				<div className={styles.interfaceContainer}>
+					<div className={styles.card}>
+						<CatPic />
+						<p className={styles.nameLabel}>{name}</p>
+					</div>
+					<div className={styles.buttonContainer}>
+						<Button 
+							backgroundImage='/thumbs-up.svg' 
+							backgroundColor='#06d6a0'
+							action={upVote}
+						/>
+						<Button 
+							backgroundImage='/question-mark.svg' 
+							backgroundColor='#959595'
+							action={unsure}
+						/>
+						<Button 
+							backgroundImage='/thumbs-down.svg' 
+							backgroundColor='#ef476f'
+							action={downVote}
+						/>
+					</div>
 				</div>
 			</div>
 		</main>

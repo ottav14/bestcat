@@ -1,3 +1,20 @@
+.main {
+	display: flex;
+	justify-content: center; 
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.container {
+	width: 60vw;
+	height: 85vh;
+	background-color: var(--accent-3);
+	margin-top: 20px;
+	border: 3px solid var(--highlight);
+	border-radius: 20px;
+}
+
 .interfaceContainer {
 
 	display: flex;
@@ -16,12 +33,10 @@
 
 .img {
 
-	background-color: #000;
-	border-bottom: 2px solid var(--highlight);
-	border-radius: 20px 20px 0 0;
+	border-radius: 20px;
 	overflow: hidden;
-	width: 512px;
-	height: 512px;
+	width: 450px;
+	height: 450px;
 
 }
 
@@ -30,12 +45,14 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	width: 512px;
-	height: 650px;
-	margin-top: 95px;
+	width: 450px;
+	height: 550px;
+	margin-top: 60px;
 	background-color: var(--accent-1);
 	border-radius: 20px;
+	border: 3px solid var(--highlight);
 	font-size: 32pt;
+	overflow: hidden;
 }
 
 .nameLabel {
@@ -45,5 +62,6 @@
 	.img {
 		width: 350px;
 		height: 350px;
+		margin-top: 40px;
 	}
 }
