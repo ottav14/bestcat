@@ -49,6 +49,7 @@ export async function GET(request, { params }) {
 		const obj = {
 			count: docs[i].count,
 			base64: imageBase64,
+			name: docs[i].name,
 			id: docs[i]._id,
 		};
 		objs.push(obj);

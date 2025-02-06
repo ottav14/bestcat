@@ -48,14 +48,15 @@ const Leaderboard = () => {
 		return (
 			<div className={styles.leaderboard}>
 				<div className={styles.labels}>
-					<div className={styles.catLabel}>Cat</div>
+					<div className={styles.catLabel}>Pic</div>
+					<div className={styles.nameLabel}>Name</div>
 					<div className={styles.ratingLabel}>Rating</div>
 				</div>
 				<div className={styles.entries}>
 					{entries.map((entry, i) => {
 						const backgroundColor = (i % 2 == 0) ? primaryColor : secondayColor;
 						return (
-							<LeaderboardEntry img={entry.base64} count={entry.count} bgColor={backgroundColor} key={entry.id} />
+							<LeaderboardEntry img={entry.base64} count={entry.count} name={entry.name} bgColor={backgroundColor} key={entry.id} />
 						);
 					})}
 				</div>

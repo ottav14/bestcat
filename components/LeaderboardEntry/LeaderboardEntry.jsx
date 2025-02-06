@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './LeaderboardEntry.module.css';
 
-const LeaderboardEntry = ({ img, count, bgColor }) => {
+const LeaderboardEntry = ({ img, count, name, bgColor }) => {
 
 	const [onMobile, setOnMobile] = useState(false);
 
@@ -29,6 +29,7 @@ const LeaderboardEntry = ({ img, count, bgColor }) => {
 					height={imageResolution}
 					priority={true}
 				/>
+				<p className={styles.name}>{name}</p>
 				<p className={styles.count}>{count}</p>
 			</div>
 		);

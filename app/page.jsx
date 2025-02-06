@@ -9,13 +9,14 @@ import LoadingImage from '../components/LoadingImage/LoadingImage.jsx';
 const Home = () => {
 
 	const [base64, setBase64] = useState('');
+	const [name, setName] = useState('');
 	const [apiResponse, setApiResponse] = useState({});
 	const [loading, setLoading] = useState(true);
 	const [rerender, setRerender] = useState(false);
 	const [error, setError] = useState(false);
 	const [id, setId] = useState('');
 	const [count, setCount] = useState(0);
-	const [onMobile, setOnMobile] = useState(false);
+	const [onMobile, setOnMobile] = useState(true);
 	const [test, setTest] = useState(false);
 
 	const updateCount = async (_id, _parity) => {
@@ -38,6 +39,7 @@ const Home = () => {
 				const response = await fetch('/api/doc');
 				const data = await response.json();
 				setBase64(data.imageBase64);
+				setName(data.name);
 				setCount(data.count);
 				setId(data.id);
 				const mobileCheck = (window.innerWidth <= 768);
@@ -46,11 +48,16 @@ const Home = () => {
 				setError(error.message);
 			} finally {
 				setLoading(false);
+				console.log(name);
 			}
 		}
 		fetchDoc();
 
 	}, [rerender]);
+
+	useEffect(() => {
+		console.log(name);
+	}, [name]);
 
 	const upVote = () => {
 		setRerender(!rerender);
@@ -80,7 +87,7 @@ const Home = () => {
 
 		else {
 
-			const imageResolution = onMobile ? 350 : 512;
+			const imageResolution = onMobile ? 350 : 450;
 
 			return (
 				<div className={styles.img}>
@@ -96,26 +103,61 @@ const Home = () => {
 		}
 	}
 
+	if(onMobile) {
+		return (
+			<main className={styles.main}>
+				<div className={styles.interfaceContainer}>
+					<div className={styles.card}>
+						<CatPic />
+						<p className={styles.nameLabel}>{name}</p>
+					</div>
+					<div className={styles.buttonContainer}>
+						<Button 
+							backgroundImage='/thumbs-up.svg' 
+							backgroundColor='#06d6a0'
+							action={upVote}
+						/>
+						<Button 
+							backgroundImage='/question-mark.svg' 
+							backgroundColor='#959595'
+							action={unsure}
+						/>
+						<Button 
+							backgroundImage='/thumbs-down.svg' 
+							backgroundColor='#ef476f'
+							action={downVote}
+						/>
+					</div>
+				</div>
+			</main>
+		);
+	}
+
 	return (
 		<main className={styles.main}>
-			<div className={styles.interfaceContainer}>
-				<CatPic />
-				<div className={styles.buttonContainer}>
-					<Button 
-						backgroundImage='/thumbs-up.svg' 
-						backgroundColor='#06d6a0'
-						action={upVote}
-					/>
-					<Button 
-						backgroundImage='/question-mark.svg' 
-						backgroundColor='#959595'
-						action={unsure}
-					/>
-					<Button 
-						backgroundImage='/thumbs-down.svg' 
-						backgroundColor='#ef476f'
-						action={downVote}
-					/>
+			<div className={styles.container}>
+				<div className={styles.interfaceContainer}>
+					<div className={styles.card}>
+						<CatPic />
+						<p className={styles.nameLabel}>{name}</p>
+					</div>
+					<div className={styles.buttonContainer}>
+						<Button 
+							backgroundImage='/thumbs-up.svg' 
+							backgroundColor='#06d6a0'
+							action={upVote}
+						/>
+						<Button 
+							backgroundImage='/question-mark.svg' 
+							backgroundColor='#959595'
+							action={unsure}
+						/>
+						<Button 
+							backgroundImage='/thumbs-down.svg' 
+							backgroundColor='#ef476f'
+							action={downVote}
+						/>
+					</div>
 				</div>
 			</div>
 		</main>

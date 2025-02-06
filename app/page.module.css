@@ -1,3 +1,20 @@
+.main {
+	display: flex;
+	justify-content: center; 
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.container {
+	width: 60vw;
+	height: 85vh;
+	background-color: var(--accent-3);
+	margin-top: 20px;
+	border: 3px solid var(--highlight);
+	border-radius: 20px;
+}
+
 .interfaceContainer {
 
 	display: flex;
@@ -5,21 +22,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
-}
-
-.title {
-	--shadow-size: 2px;
-	--shadow-size-neg: calc(-1*var(--shadow-size));
-
-	font-size: 48pt;
-	font-family: 'Roboto', sans-serif;
-	padding: 10px;
-	text-shadow:
-		var(--shadow-size) var(--shadow-size) 0 #000,
-		var(--shadow-size-neg) var(--shadow-size-neg) 0 #000,
-		var(--shadow-size) var(--shadow-size-neg) 0 #000,
-		var(--shadow-size-neg) var(--shadow-size) 0 #000;
 
 }
 
@@ -31,22 +33,35 @@
 
 .img {
 
-	margin-top: 95px;
-	background-color: #000;
 	border-radius: 20px;
 	overflow: hidden;
-	width: 512px;
-	height: 512px;
+	width: 450px;
+	height: 450px;
 
 }
 
-@media(max-width: 768px) {
-	.title {
-		font-size: 24pt;
-	}
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 450px;
+	height: 550px;
+	margin-top: 60px;
+	background-color: var(--accent-1);
+	border-radius: 20px;
+	border: 3px solid var(--highlight);
+	font-size: 32pt;
+	overflow: hidden;
+}
 
+.nameLabel {
+}
+
+@media(max-width: 768px) {
 	.img {
 		width: 350px;
 		height: 350px;
+		margin-top: 40px;
 	}
 }
