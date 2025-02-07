@@ -103,33 +103,17 @@ const Home = () => {
 		}
 	}
 
-	if(onMobile) {
-		return (
-			<main className={styles.main}>
-				<div className={styles.interfaceContainer}>
-					<div className={styles.card}>
-						<CatPic />
-						<p className={styles.nameLabel}>{name}</p>
-					</div>
-					<div className={styles.buttonContainer}>
-						<Button 
-							backgroundImage='/thumbs-up.svg' 
-							backgroundColor='#06d6a0'
-							action={upVote}
-						/>
-						<Button 
-							backgroundImage='/question-mark.svg' 
-							backgroundColor='#959595'
-							action={unsure}
-						/>
-						<Button 
-							backgroundImage='/thumbs-down.svg' 
-							backgroundColor='#ef476f'
-							action={downVote}
-						/>
-					</div>
+	const Container = ({ children, onMobile }) => {
+		if(onMobile)
+			return (
+				<div className={styles.hiddenContainer}>
+					{children}
 				</div>
-			</main>
+			);
+		return (
+			<div className={styles.container}>
+				{children}
+			</div>
 		);
 	}
 
