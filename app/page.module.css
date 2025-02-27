@@ -12,35 +12,75 @@
 	justify-content: center;
 	align-items: center;
 	width: 60vw;
-	height: 85vh;
-	background-color: var(--accent-3);
+	height: 82vh;
+	background-color: var(--background);
 	margin-top: 20px;
-	border: 3px solid var(--highlight);
-	border-radius: 20px;
+	border: 1px solid var(--highlight);
+	border-radius: 12px;
+}
+
+.upButton, .downButton {
+	width: 48%;
+	height: 5rem;
+	border: 1px solid var(--highlight);
+	border-radius: 12px;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.upButton svg, .downButton svg {
+	transition: fill 0.2s ease-in-out;
+}
+
+.upButton {
+	background-color: var(--green);
+}
+
+.upButton:hover {
+	background-color: #fff;
+}
+
+.upButton:hover svg {
+	fill: var(--green);
+}
+
+.downButton {
+	background-color: var(--red);
+}
+
+.downButton:hover {
+	background-color: #fff;
+}
+
+.downButton:hover svg {
+	fill: var(--red);
+}
+
+.unsureButton {
+	background-color: var(--accent-3);
+}
+
+.unsureButton:hover {
+	background-color: #fff;
 }
 
 .interfaceContainer {
-
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
 }
 
 .buttonContainer {
-
 	display: flex;
-
+	justify-content: space-between;
+	width: 100%;
 }
 
 .img {
-
-	border-radius: 20px;
+	border-radius: 8px 8px 0 0;
 	overflow: hidden;
 	width: 450px;
 	height: 450px;
-
 }
 
 .card {
@@ -50,10 +90,10 @@
 	align-items: center;
 	width: 450px;
 	height: 550px;
-	margin: 30px 0;
-	background-color: var(--accent-1);
-	border-radius: 20px;
-	border: 3px solid var(--highlight);
+	margin: 0 0 1rem 0;
+	background-color: var(--background-color);
+	border-radius: 12px;
+	border: 1px solid var(--highlight);
 	font-size: 32pt;
 	overflow: hidden;
 }
@@ -68,8 +108,7 @@
 		margin-top: 40px;
 	}
 
-	.container, .card {
-		background-color: var(--background-color);
+	.card, .container {
 		border: none;
 	}
 
@@ -81,6 +120,10 @@
 
 	.container {
 		justify-content: flex-start;
+	}
+
+	.interfaceContainer {
+		width: 90vw;
 	}
 
 }

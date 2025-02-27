@@ -15,9 +15,6 @@ const NavBar = () => {
 			<a href='/leaderboard/0'>
 				<button className={pathname[1] === 'l' ? styles.active : styles.button}>Leaderboard</button>
 			</a>
-			<a href='/upload'>
-				<button className={pathname[1] === 'u' ? styles.active : styles.button}>Upload</button>
-			</a>
 		</div>
 	);
 }

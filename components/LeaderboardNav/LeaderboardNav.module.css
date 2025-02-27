@@ -1,23 +1,20 @@
 .main {
-
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	padding-top: 20px;
-	padding-bottom: 40px;
-
+	width: 40rem;
+	margin-top: 20px;
+	margin-bottom: 40px;
 }
 
 .left, .leftInactive, .min, .dots, .number, .active, .max, .right {
-
-	height: 60px;
-	padding: 15px;
-	margin: 10px;
+	--size: 3.5rem;
+	height: var(--size);
+	width: var(--size);
 	border: none;
 	border-radius: 5px;
 	color: var(--font-color);
 	font-size: 16pt;
-
 }
 
 .left, .right {
@@ -25,6 +22,10 @@
 
 .left, .min, .number, .max, .right {
 	background-color: var(--accent-2);
+}
+
+.dots {
+	height: 3.5rem;
 }
 
 .dots, .leftInactive {
@@ -36,23 +37,8 @@
 }
 
 .dots, .left, .leftInactive, .right {
-
 	background-size: cover;
 	background-position: center;
-	width: 40px;
-
-}
-
-.dots {
-	background-image: url('/hdots.svg');
-}
-
-.left, .leftInactive{
-	background-image: url('/left-arrow.svg');
-}
-
-.right {
-	background-image: url('/right-arrow.svg');
 }
 
 .left:hover, .min:hover, .number:hover, .max:hover, .right:hover {
@@ -61,17 +47,15 @@
 
 @media(max-width: 768px) {
 
+	.main {
+		width: 90vw;
+	}
+
 	.left, .leftInactive, .min, .dots, .number, .active, .max, .right {
-
-		height: 40px;
-		width: 40px;
-		padding: 10px;
-		margin: 5px;
-		border: none;
-		border-radius: 5px;
-		color: var(--font-color);
+		--size: 3.5rem;
+		height: var(--size);
+		width: var(--size);
 		font-size: 12pt;
-
 	}
 
 	.left, .right {

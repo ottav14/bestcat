@@ -23,7 +23,7 @@ const Leaderboard = () => {
 	useEffect(() => {
 
 		const rootStyles = getComputedStyle(document.documentElement);
-		setPrimaryColor(rootStyles.getPropertyValue('--accent-1').trim());
+		setPrimaryColor(rootStyles.getPropertyValue('--accent-3').trim());
 		setSecondaryColor(rootStyles.getPropertyValue('--background-color').trim());
 
 		const getLeaderboard = async () => {

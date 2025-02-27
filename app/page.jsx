@@ -126,21 +126,18 @@ const Home = () => {
 						<p className={styles.nameLabel}>{name}</p>
 					</div>
 					<div className={styles.buttonContainer}>
-						<Button 
-							backgroundImage='/thumbs-up.svg' 
-							backgroundColor='#06d6a0'
-							action={upVote}
-						/>
-						<Button 
-							backgroundImage='/question-mark.svg' 
-							backgroundColor='#959595'
-							action={unsure}
-						/>
-						<Button 
-							backgroundImage='/thumbs-down.svg' 
-							backgroundColor='#ef476f'
-							action={downVote}
-						/>
+						<button
+							className={styles.upButton}
+							onClick={upVote}
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" height="64px" viewBox="0 -960 960 960" width="64px" fill="#FFF"><path d="M452-244v-400L282-477l-42-43 241-241 241 241-42 42-168-168v402h-60Z"/></svg>
+						</button>
+						<button
+							className={styles.downButton}
+							onClick={downVote}
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" height="64px" viewBox="0 -960 960 960" width="64px" fill="#FFF"><path d="M479-240 238-481l42-43 170 167v-400h60v402l168-168 42 42-241 241Z"/></svg>
+						</button>
 					</div>
 				</div>
 			</div>
