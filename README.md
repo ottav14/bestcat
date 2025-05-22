@@ -10,4 +10,4 @@ Site that ranks cat photos democratically.
 Made by Dom Ottaviano.
 
 Please hire me:
-dominicjottaviano@gmail.com
+ottavianodom@gmail.com
